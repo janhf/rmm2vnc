@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" name="rmm2vnc">	
+ <target name="javadocExtern" description="Erstellt die interne Javadoc Dokumentation">
+  <javadoc access="public" author="true" classpath="bin" destdir="doc-external" doctitle="Bklosr Documentation" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="*" sourcepath="src" splitindex="true" use="true" version="true">
+   <link href="http://java.sun.com/j2se/1.7.0/docs/api/"/>
+  </javadoc>
+ </target>
+ <target name="javadocIntern" description="Erstellt die externe Javadoc Dokumentation">
+  <javadoc access="private" author="true" classpath="bin" destdir="doc-internal" doctitle="Bklosr Documentation" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="*" sourcepath="src" splitindex="true" use="true" version="true">
+   <link href="http://java.sun.com/j2se/1.7.0/docs/api/"/>
+  </javadoc>
+ </target>
+ 
+ <target name="compile" description="Kompiliert den Source Code">
+  <javac srcdir="./src/" destdir="./bin/" classpath="./lib/rc.jar:./lib/rclang_en.jar:./lib/swingx-all-1.6.4.jar" />
+  <copy todir="./bin/">
+    <fileset dir="./src/">
+      <exclude name="**/*.java"/>
+    </fileset>
+  </copy>
+ </target>
+ <target name="jar" depends="compile" description="Erstellt die .jar-Datei">
+  <jar destfile="jar/kvm.jar" basedir="./bin/" compress="yes">
+    <manifest>
+      <attribute name="Built-By" value="${user.name}" />
+      <attribute name="Main-Class" value="de.bklosr.rmm2.Main" />
+      <attribute name="Class-Path" value="lib/rc.jar lib/rclang_en.jar lib/swingx-1.6.4.jar" />
+    </manifest>
+  </jar>
+  <signjar jar="./jar/kvm.jar" lazy="true" alias="codesigning" keystore="${user.home}/Documents/FREIZEIT/codesigning3.jks" keypass="codesigning3" storepass="codesigning3" verbose="true"/>
+   </target>
+	
+<target name="signlibs" description="Sign the libraries used by the programm">
+	<signjar jar="./lib/*.jar" lazy="true" alias="codesigning" keystore="${user.home}/Documents/FREIZEIT/codesigning3.jks" keypass="codesigning3" storepass="codesigning3" verbose="true"/>
+</target>
+ 
+<target name="build" depends="compile,jar" description="Kompiliert,Erstellt .jar,Erstellt javadoc">
+ </target>
+ <target name="javadoc" depends="javadocIntern,javadocExtern" description="Erstellt die interne und die externe Javadoc-Dokumentation">
+ </target>
+ <target name="clean" description="Löscht alle erstellten Dateien">
+  <delete>
+   <fileset dir="./jar/" casesensitive="yes">
+    <exclude name="lib/**" />
+   </fileset>
+  </delete>
+  <mkdir dir="jar" />
+  <delete dir="./bin/" />
+  <mkdir dir="bin" />
+  <delete dir="./doc-external/" />
+  <mkdir dir="doc-external" />
+  <delete dir="./doc-internal/" />
+  <mkdir dir="doc-internal" />
+ </target>
+ <target name="rebuilt" depends="clean,compile,jar,javadoc" description="Erstellt das gesamte Projekt erneut. (Alles löschen, alles erstellen)">
+ </target> 
+ <target name="runjar" depends="compile,jar" description="Führt das .jar-Archiv aus.">
+  <java jar="./jar/kvm.jar" fork="true" dir="./jar"/>
+ </target>
+ <target name="runbin" depends="compile" description="Führt den Binär-Code aus.">
+  <java classname="de.bklosr.rmm2.Main" fork="true" dir="./bin"/>
+ </target>
+ <target name="run" depends="runjar" description="Führt das Projekt aus. (runjar)">
+ </target>
+</project>

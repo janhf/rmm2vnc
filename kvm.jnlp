@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+  spec="1.0+"
+  codebase="https://janhf.github.io/rmm2vnc/"
+  href="kvm.jnlp">
+  <information>
+    <title>KVMoIP for RMM2</title>
+    
+    <vendor>Jan-Philipp Hülshoff</vendor>
+    <homepage href="https://janhf.github.io/rmm2vnc/"/>
+    <description>KVMoIP for Intel (R) RMM2</description>
+    <description kind="short">Opens a vnc connection to the RMM2 Module</description>
+    <!--icon kind="splash" href="images/splash.png"/>
+    <icon width="512" height="512" href="images/icon_512.png"/>
+    <icon width="256" height="256" href="images/icon_256.png"/>
+    <icon width="128" height="128" href="images/icon_128.png"/>
+    <icon width="64" height="64" href="images/icon_064.png"/>
+    <icon width="32" height="32" href="images/icon_032.png"/>
+    <icon width="16" height="16" href="images/icon_016.png"/-->
+    <!--offline-allowed/-->
+    <shortcut>
+      <menu submenu="bklosr.de"/>
+    </shortcut>
+  </information>
+  <security>
+    <all-permissions/>
+  </security>
+  <resources>
+    <j2se href="http://java.sun.com/products/autodl/j2se" version="1.7+"/>
+    <jar href="jar/kvm.jar" />
+    <jar href="lib/swingx-all-1.6.4.jar" />
+    <jar href="lib/rc.jar" />
+    <jar href="lib/rclang_en.jar" />
+  </resources>
+  <application-desc/>
+</jnlp>
