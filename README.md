@@ -9,7 +9,7 @@ You need to get the following Files:
 <table>
  <thead>
   <tr>
-   <td>Name</td><td>Folder</td><td>Description</td>
+   <td><b>Name</b></td><td><b>Folder</b></td><td><b>Description</b></td>
   </tr>
  </thead>
  <tbody>
@@ -17,7 +17,7 @@ You need to get the following Files:
    <td>rc.jar</td><td>lib</td><td>From Intel RMM2 Module</td>
   </tr>
   <tr>
-   <td>rcrclang_en.jar</td><td>lib</td><td>From Intel RMM2 Module</td>
+   <td>rclang_en.jar</td><td>lib</td><td>From Intel RMM2 Module</td>
   </tr>
   <tr>
    <td>DrvRedirNative.dll</td><td>.</td><td>From Intel RMM2 Module</td>
