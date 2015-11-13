@@ -5,14 +5,27 @@ Java Applets are currently phased out due to removed browser support. Intel RMM2
 
 This project uses the original jar files from the Intel RMM2 module and puts some code around the applet so that it can be started as a standalone App.
 
-You need to get the following files from your Intel RMM2:
-Name			Folder
---------------------------------
-rc.jar			lib
-rcrclang_en.jar		lib
-DrvRedirNative.dll	.
+You need to get the following Files:
+<table>
+ <thead>
+  <tr>
+   <td>Name</td><td>Folder</td><td>Description</td>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>rc.jar</td><td>lib</td><td>From Intel RMM2 Module</td>
+  </tr>
+  <tr>
+   <td>rcrclang_en.jar</td><td>lib</td><td>From Intel RMM2 Module</td>
+  </tr>
+  <tr>
+   <td>DrvRedirNative.dll</td><td>.</td><td>From Intel RMM2 Module</td>
+  </tr>
+  <tr>
+   <td>selfsigned.jks</td><td>.</td><td>Keystore for code signing. See build.xml</td>
+  </tr>
+ </tbody>
+</table>
 
-
-You need a keystore with a key inside to sign the code. (My is in selfsigned.jks in the root folder) Modify the ant script build.xml accordingly.
-
-Put these files in the lib folder of the project and build it.
+Put these files in their folders and build it.
